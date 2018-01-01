@@ -9,10 +9,10 @@ echo "Error can't find ./define/PATH_${4}"
 exit 0
 fi
 . ./define/PATH
-if [ `echo $LINUXDIR |grep "2.6" |wc -l` == 1 ];then
+if echo "$LINUXDIR" | grep -q "2.6"; then
 KERNEL_V26=1
 else
-KERNEL_V26=0
+KERNEL_V26=1  # ..assume that kernel cannot be older than 2.6
 fi
 _PLATFORM_=`cat define/FUNCTION_SCRIPT |grep ${4}`
 if [ "$_PLATFORM_" == "" ] || [ -e cleanfile ];then
@@ -24,7 +24,7 @@ echo -e "\033[0m"
 echo 1 > cleanfile
 rm ./toolchain/rtl8196c-toolchain-1.1/rsdk-96c
 cd toolchain/rtl8196c-toolchain-1.1/
-if [ $KERNEL_V26 == 1 ];then
+if [ $KERNEL_V26 = 1 ];then
 ln -s rsdk-1.3.6-4181-EB-2.6.30-0.9.30 rsdk-96c
 else
 ln -s rsdk-1.3.6-4181-EB-2.4.25-0.9.30 rsdk-96c
