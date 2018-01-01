@@ -14,15 +14,23 @@ This is a copy of GPL sources (toolchain and firmware) for EDIMAX BR-6528n wirel
 
 ### Prepare build system:
 
-* Download http://archive.kernel.org/centos-vault/5.11/isos/i386/CentOS-5.11-i386-netinstall.iso
-* Run in VirtualBox
-* Packages source = Web site
+* Run in VirtualBox:
+   * ISO image = http://archive.kernel.org/centos-vault/5.11/isos/i386/CentOS-5.11-i386-netinstall.iso
+   * Disk C = 20 gigbytes or more
+* Packages source = Web site:
    * Web site name = archive.kernel.org
    * CentOS directory = centos-vault/5.11/os/i386
-* yum install rcs autoconf automake libtool binutils gcc
-* sudo ln -s /path/to/edimax-br6528n-gpl/RTL8196C /home
-* cd /home/RTL8196C
-* ./BUILD
+* Install packages:
+   * sed -i -e '/^mirrorlist=.*/d' -e 's,^#baseurl=http://mirror.centos.org/centos/,baseurl=http://archive.kernel.org/centos-vault/,' -e 's,$releasever,5.11,' CentOS-Base.repo
+   * yum -y install epel-release
+   * yum -y install git
+   * yum -y groupinstall 'Development Tools'
+* Install sources:
+   * cd /home
+   * git clone https://github.com/ilyaevseev/edimax-br6528n-gpl.git
+   * ln -s /home/edimax-br6528n-gpl/RTL8196C /home
+   * cd /home/RTL8196C
+   * ./BUILD
 
 ### Note about nested archives:
 
