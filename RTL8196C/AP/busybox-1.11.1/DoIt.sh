@@ -3,7 +3,7 @@ set -e
 . ../../define/FUNCTION_SCRIPT
 . ../../define/PATH
 PATH=${CROSSDIR}:${PATH}
-function SEARCH_AND_REPLACE {
+SEARCH_AND_REPLACE() {
 	if [ -f "$1" ]; then
 		filename=$1
 		target_old=$2

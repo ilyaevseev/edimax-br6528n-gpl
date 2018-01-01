@@ -25,7 +25,7 @@ echo "usage $0 [make|clean]"
 exit 1
 ;;
 esac
-function check_condition
+check_condition()
 {
 IS_COMPILER="n"
 COMPILER_VAR=""

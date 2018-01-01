@@ -8,7 +8,7 @@ ln -s config.in_2300 config.in
 rm -r bsp
 ln -s bsp_1200 bsp
 cd $pwd
-function SEARCH_AND_REPLACE {
+SEARCH_AND_REPLACE() {
 	if [ -f "$1" ]; then
 		filename=$1
 		target_old=$2
